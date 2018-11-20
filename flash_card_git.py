@@ -30,9 +30,11 @@ def update():
             return_to_main()
 # imports the pickle file as a dictionary that is ready to be reviewed and edited
 # imports the pickle file from my example directory where I have a specific folder for flashcard sets
+# I've included seget += ".pickle" so the user does not need to write .pickle every time they want to retrieve a flashcard set.
 def importF():
     print("ehyo! what set u gwanna get?")
     setget = input("> ")
+    setget += ".pickle"
     dict_pickle = open(f'/Users/HomeFolder/Python1/Flashcardz/{setget}',"rb") # read bytes
     global cards
     cards = pickle.load(dict_pickle)
