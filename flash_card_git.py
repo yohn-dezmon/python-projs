@@ -46,14 +46,14 @@ def return_to_main():
     a. Continue adding to my current set of cards
     b. Review my set
     c. Edit my set
-    d. Export my flash cards to a file
+    d. Export my flashcards to a file
     e. Leave the program''')
     choice = input("> ")
 
     if choice.lower() == "a":
         update()
     elif choice.lower() == "b":
-        review() #still need to define this.
+        review() 
     elif choice.lower() == "c":
          edit()
     elif choice.lower() == "d":
@@ -111,11 +111,12 @@ def review():
 # Greeting
 def start():
     print('''
-    Hello Indexer! Welcome to the lo-fi flash card program!
+    Hello Indexer! Welcome to the lo-fi flashcard program!
 -If at any time you want to stop creating cards, please enter a blank space-
+
 What would you like to do?
-(please select a, b, or c)
-a. Create a new set of flash cards
+(please select a or b)
+a. Create a new set of flashcards
 b. Import a previous set''')
     choice = input("> ")
 
