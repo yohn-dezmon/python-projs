@@ -7,13 +7,14 @@ import pickle
 cards = {}
 
 # export the modified or new Flashcard set to a .pickle file
+# exports the pickle file to my example directory, where I have a specific folder for flashcard sets.
 def export():
     print("What would you like your flashcard set to be called?")
     set_name = input("> ")
     set_name += ".pickle"
     print(f'Your flashcard set file name is: {set_name}')
-    new_pickle = open(set_name, "wb") # write the file to bytes
-    pickle.dump(cards, new_pickle) 
+    new_pickle = open(f'/Users/HomeFolder/Python1/Flashcardz/{set_name}', "wb") # write the file to bytes
+    pickle.dump(cards, new_pickle)
     new_pickle.close()
     print("Great! Your flashcard set has been pickled!")
     return_to_main()
@@ -28,10 +29,11 @@ def update():
         if term or defin == ' ':
             return_to_main()
 # imports the pickle file as a dictionary that is ready to be reviewed and edited
+# imports the pickle file from my example directory where I have a specific folder for flashcard sets
 def importF():
     print("ehyo! what set u gwanna get?")
     setget = input("> ")
-    dict_pickle = open(setget,"rb") # read bytes
+    dict_pickle = open(f'/Users/HomeFolder/Python1/Flashcardz/{setget}',"rb") # read bytes
     global cards
     cards = pickle.load(dict_pickle)
     print("Bayum! Your set is ready to be reviewed!")
@@ -41,11 +43,11 @@ def importF():
 def return_to_main():
     print('''
     What would you like to do?
-
     a. Continue adding to my current set of cards
     b. Review my set
     c. Edit my set
-    d. Export my flash cards to a file''')
+    d. Export my flash cards to a file
+    e. Leave the program''')
     choice = input("> ")
 
     if choice.lower() == "a":
@@ -58,7 +60,7 @@ def return_to_main():
         export()
     else:
         exit(0)
-# the editor, displays terms of the flashcard set. Gives user the option to add to, delete, redefine, or return to main menu. 
+# the editor, displays terms of the flashcard set. Gives user the option to add to, delete, redefine, or return to main menu.
 def edit():
     global cards
     print("\t\t\t WELCOME TO THE EDITOR")
@@ -75,8 +77,12 @@ def edit():
     elif resp.lower() == "b":
         print("Please enter the term you would like to be deleted:\n")
         term = input("> ")
-        cards.pop(term)
-        edit()
+        try:
+            if term in cards:
+                cards.pop(term)
+                edit()
+        except:
+            edit()
     elif resp.lower() == "c":
         print("Which term would you like to redefine?")
         term = input("> ")
@@ -86,7 +92,7 @@ def edit():
         edit()
     else:
         return_to_main()
-
+# Review the current flashcard set. It will iterate until the user enters an input that is not a term.
 def review():
     #print(', '.join(cards)) # this just returns the keys...
     print("Here is a list of your terms:")
@@ -107,10 +113,8 @@ def start():
     print('''
     Hello Indexer! Welcome to the lo-fi flash card program!
 -If at any time you want to stop creating cards, please enter a blank space-
-
 What would you like to do?
 (please select a, b, or c)
-
 a. Create a new set of flash cards
 b. Import a previous set''')
     choice = input("> ")
@@ -130,4 +134,5 @@ start()
 # (saving a dictionary to a file) https://pythonspot.com/save-a-dictionary-to-a-file/
 # (pickling?) https://docs.python.org/3.1/library/pickle.html
 # try and except: https://stackoverflow.com/questions/40369827/using-continue-in-a-try-and-except-inside-while-loop
-#  checking if a key is in a dict: https://stackoverflow.com/questions/7771318/the-most-pythonic-way-of-checking-if-a-value-in-a-dictionary-is-defined-has-zero
+# checking if a key is in a dict: https://stackoverflow.com/questions/7771318/the-most-pythonic-way-of-checking-if-a-value-in-a-dictionary-is-defined-has-zero
+# pickling to a particular directory: https://stackoverflow.com/questions/17750422/how-to-pickle-an-object-to-a-certain-directory
