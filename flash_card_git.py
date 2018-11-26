@@ -21,18 +21,27 @@ def export():
 # Allows user to create a new flashcard set from scratch or add to an existing set
 def update():
     print("Please enter your key, followed by your definition:\n")
-    print("After you've finished adding, please enter a blank space to continue")
-    while True:
-        term = input("Key: ")
+    print(''''After you've finished adding, please enter \'stop\'
+    as the term and definition to continue''')
+    term = ' ' 
+    defin = ' ' 
+    while term != 'stop':
+        term = input("Term: ")
         defin = input("Def: ")
-        cards.update( {term:defin} )
-        if term or defin == ' ':
-            return_to_main()
+        cards.update({term:defin})
+    del cards['stop']
+    return_to_main()
+#         term = input("Key: ")
+#         defin = input("Def: ")
+#         cards.update( {term:defin} )
+#         if term or defin == ' ':
+#             return_to_main()
+
 # imports the pickle file as a dictionary that is ready to be reviewed and edited
 # imports the pickle file from my example directory where I have a specific folder for flashcard sets
 # I've included seget += ".pickle" so the user does not need to write .pickle every time they want to retrieve a flashcard set.
 def importF():
-    print("ehyo! what set u gwanna get?")
+    print("ehyo! what set u gwanna get? (no file extension)")
     setget = input("> ")
     setget += ".pickle"
     dict_pickle = open(f'/Users/HomeFolder/Python1/Flashcardz/{setget}',"rb") # read bytes
