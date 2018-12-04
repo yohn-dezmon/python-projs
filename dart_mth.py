@@ -32,7 +32,7 @@ class Score(object):
 
     def __init__(self):
         self.total = [300.0]
-        # uhh I hope this doesn't reset the score...
+       
 
     def total_score(self):
         return self.total[0]
@@ -110,8 +110,6 @@ def start():
     if strt_input == 'help':
         instructions()
     elif strt_input in ['start','play']:
-        # player1 = Score()
-        # player1.initial_score()
         p1.throw_dart()
     elif strt_input in ['high score','high scores','high-score','high-scores']:
         print("didnt define yet")
@@ -131,30 +129,5 @@ def end():
 player1 = Score()
 p1 = Play()
 start()
-# player1 = Score()
-# player1.initial_score()
 
 
-
-# notes:
-
-# How to interpret inputs as numbers?
-# x = int(input("Enter a number: "))
-# source: https://stackoverflow.com/questions/20449427/how-can-i-read-inputs-as-numbers
-
-#How do I instantiate one class within another class (without inheritance)?
-# https://stackoverflow.com/questions/12008991/python-create-instance-of-class-in-another-class-with-generic-example
-# OMG! Yay! you have to instantitae the class within the constructor of the class you what-is-the-formal-difference-between-print-and-return
-# example def __init__(self): self.score = Score()
-# Wow I might be able to complete the game now...
-
-# OK since I'm having this conflict of saving a value in a class, and also being able to get out of that class
-# I'm thinking a possible solution would be to have the score in a global list...
-# then I could call the global list within the necessary classes...
-# this would change up the structure of the code a lot though.
-
-
-# functionality I want to add:
-# 1. Timer for the entire game
-# 2. High score which incorporates the timer... the high scores should probably be
-# stored in a separate file?  maybe? in a dictionary? 
