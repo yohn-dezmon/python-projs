@@ -1,0 +1,6 @@
+JSON practice
+
+This is a simple script that I wrote to practice appending a new value to a list, and exporting it as text file using JSON. 
+The difference between this script, and the sources that I used to build it, is that its functionality is executed 
+within the context of Object Oriented Programming. 
+
