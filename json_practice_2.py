@@ -4,7 +4,7 @@ import json
 class Test(object):
 
     def __init__(self):
-        self.high_scores = [1]
+        self.high_scores = [3,2,1]
         self.json_list = json.dumps(self.high_scores)
   
 
@@ -15,7 +15,7 @@ class Test(object):
 
 
     def make_json(self):
-        self.json_list = json.dump(self.high_scores)
+        self.json_list = json.dumps(self.high_scores)
         
 
     def write_json(self):
@@ -27,7 +27,6 @@ class Test(object):
         with open('hs_json.txt', 'r') as self.json_list:
             self.high_scores = json.load(self.json_list)
             self.high_scores.sort()
-            self.print_list()
 
     def print_list(self):
         for number in self.high_scores:
@@ -39,11 +38,13 @@ class Test(object):
       except:
         self.write_json() 
 
-
-
 hs = Test()
 hs.if_file_exists()
+hs.make_json()
+hs.write_json()
 New_score = 4
 hs.put_in_list(New_score)
 hs.make_json()
 hs.write_json()
+hs.load_json()
+hs.print_list()
