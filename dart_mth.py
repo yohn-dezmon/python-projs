@@ -105,17 +105,13 @@ class High_score(object):
         start()
 
 
-# I made this a separate function, don't know if it will work properly
     def print_hs(self):
-        print("These are the high scores!")
-        # is len the right thing to use here?
-        #
-        # if len(self.high_scores) <= 10:
-        for x in range(len(self.high_scores)):
-            print(x+1,self.high_scores[x])
-# this doesn't work yet
-            if range(len(self.high_scores)) == 11:
-                break
+        print("These are the TOP 10 high scores!")
+        # this saves the top 10 high scores into a list 
+        top_10 = self.high_scores[:10]
+       # this prints only the top 10 high scores
+        for x in range(len(top_10)):
+           print(x+1,top_10[x])
         start()
 
 
