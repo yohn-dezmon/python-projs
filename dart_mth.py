@@ -44,7 +44,7 @@ class Score(object):
 
     def __init__(self):
         self.total = [300.0]
-        # uhh I hope this doesn't reset the score...
+        
 
     def total_score(self):
         return self.total[0]
@@ -123,8 +123,6 @@ class High_score(object):
         start()
 
 
-
-
 class Play(object):
 
     def __init__(self):
@@ -146,12 +144,12 @@ class Play(object):
         print(dart3)
 
         round_score = dart1 + dart2 + dart3
-        try:
-            guess_sum = int(input("What is the sum of these three integers? "))
-
-        except:
-            print("that's not a number, mi friend!")
-            quit(0)
+        while True:
+            try:
+                guess_sum = int(input("What is the sum of these three integers? "))
+                break
+            except:
+                print("that's not a number, mi friend!")
 
         while guess_sum != round_score:
             print("Please try again!")
@@ -159,9 +157,6 @@ class Play(object):
         if guess_sum == round_score:
             print("Correct!")
             player1.sub_from_total(round_score)
-
-
-
 
 
 def start():
