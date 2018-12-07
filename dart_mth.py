@@ -7,7 +7,8 @@ import os
 t0 = time.time()
 
 def instructions():
-    print('''Welcome to Dart Math!
+    print('''
+    Welcome to Dart Math!
 This program is designed to let you practice your mental
 addition/subtraction so you don't make a fool
 out of yourself come game time!
@@ -160,7 +161,7 @@ class Play(object):
 
 
 def start():
-    strt_input =  input("Welcome to dart math! What would you like to do? \n ")
+    strt_input =  input("Welcome to Dart Math! What would you like to do? \n(if you're unsure, please type 'help'!)\n ")
     # if you want to use the skip option, please enter 'skip' into the acceptable_act list! 
     acceptable_act = ['help','clear','clear high score','start','quit','play','high score','high-score','high scores','high-scores']
     while strt_input not in acceptable_act:
