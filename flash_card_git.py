@@ -39,38 +39,44 @@ def update():
 
 # imports the pickle file as a dictionary that is ready to be reviewed and edited
 # imports the pickle file from my example directory where I have a specific folder for flashcard sets
-# I've included seget += ".pickle" so the user does not need to write .pickle every time they want to retrieve a flashcard set.
+# the file name must be written with the .pickle extension
 def importF():
-    print("ehyo! what set u gwanna get? (no file extension)")
-    setget = input("> ")
-    setget += ".pickle"
-    dict_pickle = open(f'/Users/HomeFolder/Python1/Flashcardz/{setget}',"rb") # read bytes
-    global cards
-    cards = pickle.load(dict_pickle)
-    print("Bayum! Your set is ready to be reviewed!")
-    return_to_main()
+    print("ehyo! what set u gwanna get?")
+    try:
+        setget = input("> ")
+        dict_pickle = open(f'/Users/HomeFolder/Python1/Flashcardz/{setget}',"rb") # read bytes
+        global cards
+        cards = pickle.load(dict_pickle)
+        print("Bayum! Your set is ready to be reviewed!")
+        return_to_main()
+    except:
+        print("Sorry couldn't find that file, try adding .pickle to the end of your file name")
+        return_to_main()
 
 # The main menu of the flashcard program, gives user the option to add to, review, edit, or export their existing flashcard set.
 def return_to_main():
     print('''
     What would you like to do?
+
     a. Continue adding to my current set of cards
     b. Review my set
     c. Edit my set
-    d. Export my flashcards to a file
-    e. Leave the program''')
+    d. Export my flash cards to a file
+    e. Exit the program''')
     choice = input("> ")
 
     if choice.lower() == "a":
         update()
     elif choice.lower() == "b":
-        review() 
+        review() #still need to define this.
     elif choice.lower() == "c":
          edit()
     elif choice.lower() == "d":
         export()
-    else:
+    elif choice.lower() == "e":
         exit(0)
+    else:
+        return_to_main()
 # the editor, displays terms of the flashcard set. Gives user the option to add to, delete, redefine, or return to main menu.
 def edit():
     global cards
