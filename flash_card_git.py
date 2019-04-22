@@ -107,14 +107,22 @@ def edit():
 def review():
     #print(', '.join(cards)) # this just returns the keys...
     print("Here is a list of your terms:")
-    for term in cards:
-        print(term)
+    key_list = list(cards.keys())
+    for x in key_list:
+        y = key_list.index(x)
+        print(f"{y}" + '.' + " " + x)
+
     while True:
-        print("Please tell me the term you'd like to review!")
-        trm = input("> ")
+        print("Please tell me the number of the term you'd like to review!")
+        try:
+            nmb= int(input("> "))
+            trm = key_list[nmb]
+        except:
+            print("that's not a number!")
+            return_to_main()
         try:
             if cards[trm]:
-                print(cards.get(trm, 'ut oh!'))
+                print(cards[trm])
         except:
             print("Sorry that's not in the list!")
             return_to_main()
